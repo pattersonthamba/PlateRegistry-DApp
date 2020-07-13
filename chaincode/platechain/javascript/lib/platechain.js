@@ -24,8 +24,8 @@ class PlateChain extends Contract {
             await ctx.stub.putState(_key, Buffer.from(JSON.stringify(jValue)));
         }else{
 			const exists = await this.createPlate(ctx, _key, _ownerName, _carModel, _company);
-			this.nextPlateId++;
 		}
+		this.nextPlateId++;
     }
 
     async createPlate(ctx, _key, _ownerName, _carModel, _company) {
