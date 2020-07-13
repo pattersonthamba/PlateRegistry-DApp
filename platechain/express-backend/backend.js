@@ -36,8 +36,6 @@ async function getPlate(carID, socket, failure){
         // Get the contract from the network.
         const contract = network.getContract('platechain');
         // Evaluate the specified transaction.
-        // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
-        // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
         const query_responses = await contract.evaluateTransaction('getPlate', carID);
         console.log(`Transaction has been evaluated, result is: ${query_responses.toString()}`);
         socket.emit('RESPONSE', {type: 'FEED', payload: "Sending query to peers" });
@@ -92,8 +90,6 @@ async function invoke(request, socket){
     const contract = network.getContract('platechain');
 
     // Submit the specified transaction.
-    // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-    // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
     if(request.funcName == "checkPlate"){
         await contract.submitTransaction('checkPlate', request.args[0] , request.args[1] ,request.args[2] , request.args[3] );
         idCounter++ ;
@@ -102,8 +98,7 @@ async function invoke(request, socket){
     }
     else{
         await contract.submitTransaction('renewPlate', request.args[0]);
-        idCounter++;
-        socket.emit('RESPONSE', {type: 'START', payload: `Transaction is successfull.Check your license plate id : LP_0` + idCounter });
+        socket.emit('RESPONSE', {type: 'START', payload: `Transaction is successfull.Check your license plate id : ` + request.args[0] });
         console.log('Transaction has been submitted');
     }
 
@@ -121,8 +116,7 @@ async function invoke(request, socket){
 io.on('connection', socket => {
     console.log(`Connected to client with socket ID ${socket.id}`)
     socket.emit('RESPONSE', {type: 'FEED',  payload: `Connected to server with socket ID ${socket.id}` });
-    // enroll user when client connects, default user is user1
-   // let user = getUser(socket, 'user1');    
+
     socket.on('REQUEST', (req) => {
         switch (req.action)
         {
