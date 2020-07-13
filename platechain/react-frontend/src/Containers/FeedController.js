@@ -85,10 +85,7 @@ class FeedController extends Component {
     this.props.socket.on('queryResponse', (data) => {
       this.dataHandler(data);
       })
-    this.props.socket.on('queryAllResponse', (data) => {
-      this.dataHandler(data);
-      })
-    this.props.socket.on('transferResponse', (data) => {
+    this.props.socket.on('renewResponse', (data) => {
       this.dataHandler(data);
       })
     this.props.socket.on('createResponse', (data) => {

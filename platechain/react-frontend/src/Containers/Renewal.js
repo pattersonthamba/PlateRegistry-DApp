@@ -19,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-class Transfer extends React.Component {
+class Renewal extends React.Component {
   state = {
       ID:null
   };
@@ -58,7 +58,7 @@ class Transfer extends React.Component {
           margin="normal"
         />
         <Button variant="contained" color="primary" disabled={!this.props.connected} className={classes.button} onClick={this.submitHandler}>
-            {this.props.connected ? "RENEWAL" : "DISCONNECTED"}
+            {this.props.connected ? "RENEW" : "DISCONNECTED"}
         </Button>
         <p>License Plate ID is case sensitive must be valid and it must start with 'LP_0'</p>
       </form>
@@ -68,4 +68,4 @@ class Transfer extends React.Component {
 }
 
 
-export default withStyles(styles)(Transfer);
+export default withStyles(styles)(Renewal);

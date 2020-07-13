@@ -55,7 +55,7 @@ class Query extends React.Component {
         Query a single plate
       </Typography>
         <TextField
-          label="CAR ID"
+          label="LP_0ID"
           className={classes.textField}
           value={this.state.ID}
           onChange={this.handleChange('ID')}
