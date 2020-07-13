@@ -124,7 +124,9 @@ Note : If you are not able to access the server outside the instance , check the
 
 Thank you for your time.
 
-#Resources
+---
+
+## Resources
 BLOCKCHAIN NETWORK
 1. Hyperledger fabric samples(test-network is used).
 2. Fabric node SDK
