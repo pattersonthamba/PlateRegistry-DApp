@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       showFeed: false,
       connected: false,
-      socket : socketIOClient("http://35.225.80.171:4001/"),
+      socket : socketIOClient("http://[YOUR_EXTERNAL_IP]:4001/"),
       blocks : [],
     }  
 
